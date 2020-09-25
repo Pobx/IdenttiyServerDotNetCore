@@ -37,7 +37,7 @@ namespace Api {
       services.AddAuthorization (options => {
         options.AddPolicy ("ApiScope", policy => {
           policy.RequireAuthenticatedUser ();
-          policy.RequireClaim ("scope", "api");
+          policy.RequireClaim ("scope", "api1");
         });
 
       });
