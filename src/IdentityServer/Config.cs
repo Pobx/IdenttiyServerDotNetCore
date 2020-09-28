@@ -44,7 +44,7 @@ namespace IdentityServer {
 
         AllowAccessTokensViaBrowser = true,
         RedirectUris = { "https://localhost:4200/auth-callback" },
-        PostLogoutRedirectUris = { "https://localhost:4200/home" },
+        PostLogoutRedirectUris = { "https://localhost:4200/logout" },
         AllowedCorsOrigins = { "https://localhost:4200" },
 
         AllowedScopes = new List<string> {
