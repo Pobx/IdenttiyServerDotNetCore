@@ -54,7 +54,7 @@ namespace IdentityServer {
         "https://localhost:4200"
         },
         AllowedCorsOrigins = new List<string> {
-        $"{spaClient}",
+        $"{spaClientUrl}",
         "https://localhost:4200"
         },
         AllowedScopes = new List<string> {
