@@ -7,7 +7,7 @@ using IdentityServer4.Models;
 
 namespace IdentityServer {
   public static class Config {
-    private static string spaClientUrl = "https://localhost:44311";
+    private static string spaClientUrl = "https://localhost:4200";
     public static IEnumerable<IdentityResource> IdentityResources =>
       new IdentityResource[] {
         new IdentityResources.OpenId ()
@@ -15,7 +15,8 @@ namespace IdentityServer {
 
     public static IEnumerable<ApiScope> ApiScopes =>
       new ApiScope[] {
-        new ApiScope ("api1", "My API")
+        new ApiScope ("api1", "My API"),
+        new ApiScope("resourceApi", "My API for SPA")
       };
 
     public static IEnumerable<Client> Clients =>
