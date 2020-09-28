@@ -34,7 +34,7 @@ namespace IdentityServer {
         new Client {
         ClientId = "spaCodeClient",
         ClientName = "SPA Code Client",
-        // AccessTokenType = AccessTokenType.Jwt,
+        AccessTokenType = AccessTokenType.Jwt,
         AccessTokenLifetime = 120, // 2 minuite
         IdentityTokenLifetime = 60,
 
@@ -44,7 +44,7 @@ namespace IdentityServer {
 
         AllowAccessTokensViaBrowser = true,
         RedirectUris = { "https://localhost:4200/auth-callback" },
-        PostLogoutRedirectUris = { "https://localhost:4200/" },
+        PostLogoutRedirectUris = { "https://localhost:4200/home" },
         AllowedCorsOrigins = { "https://localhost:4200" },
 
         AllowedScopes = new List<string> {
