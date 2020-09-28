@@ -10,13 +10,14 @@ namespace IdentityServer {
     private static string spaClientUrl = "https://localhost:4200";
     public static IEnumerable<IdentityResource> IdentityResources =>
       new IdentityResource[] {
-        new IdentityResources.OpenId ()
+        new IdentityResources.OpenId (),
+        new IdentityResources.Profile ()
       };
 
     public static IEnumerable<ApiScope> ApiScopes =>
       new ApiScope[] {
         new ApiScope ("api1", "My API"),
-        new ApiScope("resourceApi", "My API for SPA")
+        new ApiScope ("resourceApi", "My API for SPA")
       };
 
     public static IEnumerable<Client> Clients =>
@@ -33,36 +34,46 @@ namespace IdentityServer {
         new Client {
         ClientId = "spaCodeClient",
         ClientName = "SPA Code Client",
-        AccessTokenType = AccessTokenType.Jwt,
+        // AccessTokenType = AccessTokenType.Jwt,
         AccessTokenLifetime = 120, // 2 minuite
         IdentityTokenLifetime = 60,
 
-        RequireClientSecret = false,
         AllowedGrantTypes = GrantTypes.Code,
-        RequirePkce = true,
+        RequireClientSecret = false,
+        // RequirePkce = true,
 
         AllowAccessTokensViaBrowser = true,
-        RedirectUris = new List<string> {
-        $"{spaClientUrl}/callback",
-        $"{spaClientUrl}/silent-renew.html",
-        "https://localhost:4200",
-        "https://localhost:4200/silent-renew.html"
-        },
-        PostLogoutRedirectUris = new List<string> {
-        $"{spaClientUrl}/unauthorized",
-        $"{spaClientUrl}",
-        "https://localhost:4200/unauthorized",
-        "https://localhost:4200"
-        },
-        AllowedCorsOrigins = new List<string> {
-        $"{spaClientUrl}",
-        "https://localhost:4200"
-        },
+        RedirectUris = { "https://localhost:4200/auth-callback" },
+        PostLogoutRedirectUris = { "https://localhost:4200/" },
+        AllowedCorsOrigins = { "https://localhost:4200" },
+
         AllowedScopes = new List<string> {
         IdentityServerConstants.StandardScopes.OpenId,
         IdentityServerConstants.StandardScopes.Profile,
-        "resourceApi"
+        "resourceApi",
         }
+
+        // RedirectUris = new List<string> {
+        // $"{spaClientUrl}/callback",
+        // $"{spaClientUrl}/silent-renew.html",
+        // "https://localhost:4200",
+        // "https://localhost:4200/silent-renew.html"
+        // },
+        // PostLogoutRedirectUris = new List<string> {
+        // $"{spaClientUrl}/unauthorized",
+        // $"{spaClientUrl}",
+        // "https://localhost:4200/unauthorized",
+        // "https://localhost:4200"
+        // },
+        // AllowedCorsOrigins = new List<string> {
+        // $"{spaClientUrl}",
+        // "https://localhost:4200"
+        // },
+        // AllowedScopes = new List<string> {
+        // IdentityServerConstants.StandardScopes.OpenId,
+        // IdentityServerConstants.StandardScopes.Profile,
+        // "resourceApi"
+        // }
 
         }
       };
