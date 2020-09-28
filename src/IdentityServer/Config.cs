@@ -34,7 +34,7 @@ namespace IdentityServer {
         new Client {
         ClientId = "spaCodeClient",
         ClientName = "SPA Code Client",
-        AccessTokenType = AccessTokenType.Jwt,
+        // AccessTokenType = AccessTokenType.Jwt, // default is Jwt
         AccessTokenLifetime = 120, // 2 minuite
         IdentityTokenLifetime = 60,
 
