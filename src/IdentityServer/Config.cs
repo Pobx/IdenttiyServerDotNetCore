@@ -52,29 +52,6 @@ namespace IdentityServer {
         IdentityServerConstants.StandardScopes.Profile,
         "resourceApi",
         }
-
-        // RedirectUris = new List<string> {
-        // $"{spaClientUrl}/callback",
-        // $"{spaClientUrl}/silent-renew.html",
-        // "https://localhost:4200",
-        // "https://localhost:4200/silent-renew.html"
-        // },
-        // PostLogoutRedirectUris = new List<string> {
-        // $"{spaClientUrl}/unauthorized",
-        // $"{spaClientUrl}",
-        // "https://localhost:4200/unauthorized",
-        // "https://localhost:4200"
-        // },
-        // AllowedCorsOrigins = new List<string> {
-        // $"{spaClientUrl}",
-        // "https://localhost:4200"
-        // },
-        // AllowedScopes = new List<string> {
-        // IdentityServerConstants.StandardScopes.OpenId,
-        // IdentityServerConstants.StandardScopes.Profile,
-        // "resourceApi"
-        // }
-
         }
       };
   }
