@@ -25,14 +25,6 @@ namespace Api {
     public void ConfigureServices (IServiceCollection services) {
       services.AddControllers ();
 
-      services.AddCors (options => {
-        options.AddPolicy ("default", policy => {
-          policy.WithOrigins ("https://localhost:4200")
-            .AllowAnyHeader ()
-            .AllowAnyMethod ();
-        });
-      });
-
       services.AddAuthentication (JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer (JwtBearerDefaults.AuthenticationScheme, options => {
           options.Authority = "https://localhost:5001";
@@ -46,9 +38,17 @@ namespace Api {
         options.AddPolicy ("ApiScope", policy => {
           policy.RequireAuthenticatedUser ();
           policy.RequireClaim ("scope", "api1");
-          policy.RequireClaim("scope", "resourceApi");
+          policy.RequireClaim ("scope", "resourceApi");
         });
 
+      });
+
+      services.AddCors (options => {
+        options.AddPolicy ("default", policy => {
+          policy.WithOrigins ("https://localhost:4200")
+            .AllowAnyHeader ()
+            .AllowAnyMethod ();
+        });
       });
     }
 
