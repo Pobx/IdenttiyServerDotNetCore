@@ -32,10 +32,13 @@ namespace IdentityServer {
       // builder.AddDeveloperSigningCredential ();
 
       var migrationsAssembly = typeof (Startup).GetTypeInfo ().Assembly.GetName ().Name;
-      const string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;database=IdentityServer4.Quickstart.EntityFramework-4.0.0;trusted_connection=yes;";
+      const string connectionString = @"Server=localhost;Database=IdentityServer4Demo;User Id=sa;Password=P@ssword1234;";
       services.AddIdentityServer ()
         .AddTestUsers (TestUsers.Users)
         .AddConfigurationStore (options => {
+          options.ConfigureDbContext = b => b.UseSqlServer (connectionString, sql => sql.MigrationsAssembly (migrationsAssembly));
+        })
+        .AddOperationalStore (options => {
           options.ConfigureDbContext = b => b.UseSqlServer (connectionString, sql => sql.MigrationsAssembly (migrationsAssembly));
         });
 
