@@ -36,7 +36,7 @@ namespace IdentityServer {
 
       var migrationsAssembly = typeof (Startup).GetTypeInfo ().Assembly.GetName ().Name;
       const string connectionString = @"Server=localhost;Database=IdentityServer4Demo;User Id=sa;Password=P@ssword1234;";
-      services.AddIdentityServer ()
+      var builder = services.AddIdentityServer ()
         .AddTestUsers (TestUsers.Users)
         .AddConfigurationStore (options => {
           options.ConfigureDbContext = b => b.UseSqlServer (connectionString, sql => sql.MigrationsAssembly (migrationsAssembly));
@@ -44,6 +44,8 @@ namespace IdentityServer {
         .AddOperationalStore (options => {
           options.ConfigureDbContext = b => b.UseSqlServer (connectionString, sql => sql.MigrationsAssembly (migrationsAssembly));
         });
+
+      builder.AddDeveloperSigningCredential ();
 
     }
 
